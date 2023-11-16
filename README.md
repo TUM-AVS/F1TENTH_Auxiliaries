@@ -17,6 +17,8 @@ For inquiries or further information, please write an email to [felix.jahncke@tu
 ## F1TENTH - Bill of Materials Deutschland/ Germany/ EU
 This document contains an Excel file with an adjusted Bill of Materials for Germany. This can also be helpful for other European Countries that can avoid tax forms. An exception is the VESC, which can only be ordered in the UK. It is indicated for each item whether it can be ordered by invoice. This process is particularly important for accounting at German universities and reduces the need to personally pay the money.
 
+Please note that our mechanical and electrical workshops construct the platform decks and powerboards, which are not included in our Bill of Materials (BOM) at this time.
+
 ## F1TENTH - Bash Scripts
 Multiple bash scripts exist to install different elements of the F1TENTH software stack, such as:
 - Initial setup and ROS2 installation
