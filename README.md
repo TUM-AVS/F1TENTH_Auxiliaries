@@ -1,6 +1,8 @@
 # Table of Contents
 - [F1TENTH_Auxiliaries](#f1tenth-auxiliaries)
   * [F1TENTH - Bill of Materials Deutschland/ Germany/ EU](#f1tenth---bill-of-materials-deutschland--germany--eu)
+  * [F1TENTH - Bash Scripts](#f1tenth---bash-scripts)
+  * [TUM Odometry Files](#tum-odometry-files)
 
 
 # F1TENTH_Auxiliaries
