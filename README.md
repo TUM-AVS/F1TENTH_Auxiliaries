@@ -2,7 +2,7 @@
 - [F1TENTH_Auxiliaries](#f1tenth-auxiliaries)
   * [F1TENTH - Bill of Materials Deutschland/ Germany/ EU](#f1tenth---bill-of-materials-deutschland--germany--eu)
   * [F1TENTH - Bash Scripts](#f1tenth---bash-scripts)
-  * [F1TENTH - Bash Scripts](#f1tenth---cad-files)
+  * [F1TENTH - CAD Files](#f1tenth---cad-files)
   * [TUM Odometry Files](#tum-odometry-files)
 
 
