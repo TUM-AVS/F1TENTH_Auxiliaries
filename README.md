@@ -16,7 +16,7 @@ In addition, multiple students developed parts of this repository during their b
 For inquiries or further information, please write an email to [felix.jahncke@tum.de](mailto:felix.jahncke@tum.de?subject=F1TENTH%20Auxiliaries%20Repository).
 
 ## F1TENTH - Bill of Materials Deutschland/ Germany/ EU
-This document contains an Excel file with an adjusted Bill of Materials for Germany. This can also be helpful for other European Countries that can avoid tax forms. An exception is the VESC, which can only be ordered in the UK. It is indicated for each item whether it can be ordered by invoice. This process is particularly important for accounting at German universities and reduces the need to personally pay the money.
+This document contains an Excel file with an adjusted Bill of Materials for Germany. This can also be helpful for other European Countries, avoiding additional workload through taxes and customs. An exception is the VESC, which can only be ordered in the UK. It is indicated for each item whether it can be ordered by invoice. This process is particularly important for accounting at German universities and reduces the need to personally pay the money.
 
 Please note that our mechanical and electrical workshops construct the platform decks and powerboards, which are not included in our Bill of Materials (BOM) at this time.
 
