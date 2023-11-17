@@ -3,7 +3,7 @@
   * [F1TENTH - Bill of Materials Deutschland/ Germany/ EU](#f1tenth---bill-of-materials-deutschland--germany--eu)
   * [F1TENTH - Bash Scripts](#f1tenth---bash-scripts)
   * [F1TENTH - CAD Files](#f1tenth---cad-files)
-  * [TUM Odometry Files](#tum-odometry-files)
+  * [TUM - Odometry Files](#tum---odometry-files)
 
 
 # F1TENTH_Auxiliaries
@@ -28,9 +28,10 @@ Multiple bash scripts exist to install different elements of the F1TENTH softwar
 
 ## F1TENTH - CAD Files
 We have developed CAD files for specific purposes, including:
-- Mounts improving the robustness and stability for the autonomy platform on the Slack chassis (no need to hot glue the standoffs any more)
-- Mounting a ZED-2 camera above the LiDAR sensor
+- Slash Platform Holder: Mounts improving the robustness and stability of the autonomy platform on the Slack chassis (no need to hot glue the standoffs anymore)
+- Camera-LiDAR mount: Mounting a ZED-2 camera above the LiDAR sensor
+- U-Stand: Stands to double stack the F1TENTH racetrack boundaries
 
-## TUM Odometry Files
+## TUM - Odometry Files
 This section contains tuned odometry files for all TUM F1TENTH cars. The tuning follows the official F1TENTH instructions found here: [F1TENTH Odometry Calibration](https://github.com/f1tenth/f1tenth_doc/blob/foxy_test/getting_started/driving/drive_calib_odom.rst "F1TENTH Odometry Calibration") 
 
