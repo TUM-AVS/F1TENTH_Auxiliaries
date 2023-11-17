@@ -21,6 +21,9 @@ This document contains an Excel file with an adjusted Bill of Materials for Germ
 Please note that our mechanical and electrical workshops construct the platform decks and powerboards, which are not included in our Bill of Materials (BOM) at this time.
 
 ## F1TENTH - Bash Scripts
+> :warning: **Warning**: Currently under construction!
+
+
 Multiple bash scripts exist to install different elements of the F1TENTH software stack, such as:
 - Initial setup and ROS2 installation
 - F1TENTH software stack
