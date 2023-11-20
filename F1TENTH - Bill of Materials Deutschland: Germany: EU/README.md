@@ -1,0 +1,3 @@
+This document contains an Excel file with an adjusted Bill of Materials for Germany. This can also be helpful for other European Countries, avoiding additional workload through taxes and customs. An exception is the VESC, which can only be ordered in the UK. It is indicated for each item whether it can be ordered by invoice. This process is particularly important for accounting at German universities and reduces the need to personally pay the money.
+
+Please note that our mechanical and electrical workshops construct the platform decks and powerboards, which are not included in our Bill of Materials (BOM) at this time.
