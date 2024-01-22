@@ -34,13 +34,13 @@ If the command prints true at the end, Torch can use the GPU.
 25. cd ~/range_libc/pywrapper
 26. sudo WITH_CUDA=ON python3 setup.py install #for python3.8
 27. git clone https://github.com/fjahncke/f1tenth_ws_waterloo.git
-sudo apt install ros-foxy-tf-transformations ros-foxy-navigation2
-cd f1tenth_ws_waterloo
-colcon build --symlink-install
-source install/setup.bash
-export PYTHONPATH=${PYTHONPATH}:/usr/lib/python3.8/site-packages/range_libc-0.1-py3.8-linux-aarch64.egg
-colcon build --symlink-install
-source install/setup.bash
-ros2 launch particle_filter localize_launch.py
-In another terminal, source and launch the Pure Pursuit:
-ros2 launch pure_pursuit pure_pursuit_launch.py
+  sudo apt install ros-foxy-tf-transformations ros-foxy-navigation2
+  cd f1tenth_ws_waterloo
+  colcon build --symlink-install
+  source install/setup.bash
+  export PYTHONPATH=${PYTHONPATH}:/usr/lib/python3.8/site-packages/range_libc-0.1-py3.8-linux-aarch64.egg
+  colcon build --symlink-install
+  source install/setup.bash
+  ros2 launch particle_filter localize_launch.py
+  In another terminal, source and launch the Pure Pursuit:
+  ros2 launch pure_pursuit pure_pursuit_launch.py
