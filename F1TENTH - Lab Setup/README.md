@@ -11,9 +11,10 @@
 9. Add a unique ID to the bashrc file so no car communicates with each other over Wifi. The ID is identical to the chassis number.
 10. Open the bash script with "sudo nano ~/.bashrc" and in the last line enter for, e.g., chassis 7: "ROS_DOMAIN_ID=7".
 11. Install the corresponding ZED SDK from here: [ZED SDK Download](https://www.stereolabs.com/developers/release). The installation instructions are here: [ZED SDK Installation Instructions](https://www.stereolabs.com/docs/installation/jetson)). Click yes to all options until it wants to download the AI modules. Click no there.
-12. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
-13. Install PyTorch with CUDA bindings on Jetson: [Install PyTorch on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html "Install PyTorch on Jetson")
-14. Verify the functionality of the install by running the following commands in a terminal:
+12. Add the ZED ROS2 Wrapper to the f1tenth_ws workspace and install according to the official repository: [ZED ROS2 Wrapper Installation Instructions](https://github.com/stereolabs/zed-ros2-wrapper)
+13. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
+14. Install PyTorch with CUDA bindings on Jetson: [Install PyTorch on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html "Install PyTorch on Jetson")
+15. Verify the functionality of the install by running the following commands in a terminal:
 - "python3"
 - "import torch"
 - "print(torch.cuda.is_available())"
