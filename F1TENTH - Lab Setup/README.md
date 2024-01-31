@@ -75,14 +75,14 @@ colcon build --symlink-install --cmake-args=-DCMAKE_BUILD_TYPE=Release --paralle
 Test the ZED2 Wrapper via:
 ```
 ros2 launch zed_wrapper zed_camera.launch.py camera_model:=<camera_model>
-``
+```
 Replace <camera_model> with the model of the camera that you are using: 'zed', 'zedm', 'zed2', 'zed2i', 'zedx', 'zedxm'.
-4. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
+3. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
 ```
 sudo nano /etc/systemd/nvzramconfig.sh
 ```
 Change the line:
-``
+```
 mem=$((("${totalmem}" / 2 / "${NRDEVICES}") * 1024))
 ```
 to:
@@ -90,7 +90,7 @@ to:
 mem=$((("${totalmem}" / "${NRDEVICES}") * 1024 * 2))
 ```
 
-5. Install Tensorflow for Jetson for Tensorboard: [Install Tensorflow on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html "Install Tensorflow on Jetson")
+4. Install Tensorflow for Jetson for Tensorboard: [Install Tensorflow on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html "Install Tensorflow on Jetson")
 ```
 sudo apt-get update
 sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
@@ -112,14 +112,14 @@ python3 -m pip install numpy==1.22
 python3 -m pip install --no-cache $TORCH_INSTALL
 ```
 6. Verify the functionality of the install by running the following commands in a terminal
-
-7. 
-- "python3"
-- "import torch"
-- "print(torch.cuda.is_available())"
-- "exit()"
+```
+python3
+import torch
+print(torch.cuda.is_available())
+exit()
+```
 If the command prints true at the end, Torch can use the GPU.
-1. Install Torchvision with [Install Torchvision on Jetson](https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
+7. Install Torchvision with [Install Torchvision on Jetson](https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
 Look up the torchvision version corresponding to the PyTorch Version
 and insert it as e.g. v0.16.1 in <version> and 0.16.1 for <build_version>. The installation takes quite some time.
 ```
@@ -130,7 +130,7 @@ export BUILD_VERSION=<build_version>
 python3 setup.py install --user
 cd
 ```
-Test the success with:
+Test via:
 ```
 python3
 import torchvision
