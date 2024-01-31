@@ -87,7 +87,7 @@ If the command prints true at the end, Torch can use the GPU.
 Look up the torchvision version corresponding to the PyTorch Version
 and insert it as e.g. v0.16.1 in <version> and 0.16.1 for <build_version>. The installation takes quite some time.
 ```
-sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libopenblas-dev libavcodec-dev libavformat-dev libswscale-de
+sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libopenblas-dev libavcodec-dev libavformat-dev libswscale-dev
 git clone --branch <version> https://github.com/pytorch/vision torchvision
 cd torchvision
 export BUILD_VERSION=<build_version>
