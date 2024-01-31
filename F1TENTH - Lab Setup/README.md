@@ -120,6 +120,7 @@ print(torch.cuda.is_available())
 exit()
 ```
 If the command prints true at the end, Torch can use the GPU.
+
 7. Install Torchvision with [Install Torchvision on Jetson](https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
 Look up the torchvision version corresponding to the PyTorch Version
 and insert it as e.g. v0.16.1 in <version> and 0.16.1 for <build_version>. The installation takes quite some time.
