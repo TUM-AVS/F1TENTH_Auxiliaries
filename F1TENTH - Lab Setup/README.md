@@ -41,6 +41,7 @@ sudo nano ~/.bashrc
 15. Enter in the last line the following command, save and then close the file
 ```
 export ROS_LOCALHOST_ONLY=1
+export /opt/ros/foxy/setup.bash
 ```
 10. [Install Zerotier](https://www.zerotier.com/download/) and add the car to the correct network by replacing <network_id> with the correct parameter
 ```
