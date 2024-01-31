@@ -111,7 +111,9 @@ python3 -m pip install --upgrade pip
 python3 -m pip install numpy==1.22
 python3 -m pip install --no-cache $TORCH_INSTALL
 ```
-6. Verify the functionality of the install by running the following commands in a terminal:d
+6. Verify the functionality of the install by running the following commands in a terminal
+
+7. 
 - "python3"
 - "import torch"
 - "print(torch.cuda.is_available())"
