@@ -74,7 +74,7 @@ sudo apt-get -y update;
 sudo apt-get -y install python3-pip libopenblas-dev
 export TORCH_INSTALL=<path/to/torch>
 python3 -m pip install --upgrade pip
-python3 -m pip install numpy==’1.26.1’
+python3 -m pip install numpy==1.22
 python3 -m pip install --no-cache $TORCH_INSTALL
 ```
 24. Verify the functionality of the install by running the following commands in a terminal:d
