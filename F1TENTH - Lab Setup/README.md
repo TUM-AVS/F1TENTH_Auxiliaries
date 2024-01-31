@@ -1,4 +1,12 @@
 # Instructions to set up an NVIDIA Jetson Orin Nano for all TUM F1TENTH Labs using an SD Card or SSD.
+The following instructions where tested and verifies on the following hard- and software on the 31. Jan 2024
+- Jetson Orin Nano 8GB Development Kit
+- Jetpack 5.1.2
+- SD Card (SanDisk Extreme 128GB) and SSD
+- ZED 1/2 camera
+- Hokuyo UST-10LX
+- Hint: Do not use SD Cards if you use the Jetson intensively. It is prone to have corrupted files after some time that can break the entire system.
+
 ## General Setup
 0. If you want to resetup and SD Card, save all important data from the previous SD Card image.
 1. Flash an SD Card with the correct Jetpack Version (currently 5.1.2 [Jetpack 5.1.2 Download](https://developer.nvidia.com/embedded/jetpack-sdk-512)) using, e.g., Balena Etcher: [Balena Etcher Download](https://etcher.balena.io).
@@ -55,9 +63,34 @@ sudo zerotier-cli join <network_id>
 pip3 install onnx
 cd Downloads && chmod +x ZED_SDK* && ./ZED_SDK*
 ```
-2. Add the ZED ROS2 Wrapper to the f1tenth_ws workspace and install according to the official repository: [ZED ROS2 Wrapper Installation Instructions](https://github.com/stereolabs/zed-ros2-wrapper)
-3. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
-4. Install Tensorflow for Jetson for Tensorboard: [Install Tensorflow on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html "Install Tensorflow on Jetson")
+2. Add the ZED ROS2 Wrapper to the "f1tenth_ws" workspace and install according to the official repository: [ZED ROS2 Wrapper Installation Instructions](https://github.com/stereolabs/zed-ros2-wrapper)
+```
+cd ~/f1tenth_ws/src/
+git clone  --recursive https://github.com/stereolabs/zed-ros2-wrapper.git
+cd ..
+sudo apt update
+rosdep install --from-paths src --ignore-src -r -y
+colcon build --symlink-install --cmake-args=-DCMAKE_BUILD_TYPE=Release --parallel-workers $(nproc)
+```
+Test the ZED2 Wrapper via:
+```
+ros2 launch zed_wrapper zed_camera.launch.py camera_model:=<camera_model>
+``
+Replace <camera_model> with the model of the camera that you are using: 'zed', 'zedm', 'zed2', 'zed2i', 'zedx', 'zedxm'.
+4. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
+```
+sudo nano /etc/systemd/nvzramconfig.sh
+```
+Change the line:
+``
+mem=$((("${totalmem}" / 2 / "${NRDEVICES}") * 1024))
+```
+to:
+```
+mem=$((("${totalmem}" / "${NRDEVICES}") * 1024 * 2))
+```
+
+5. Install Tensorflow for Jetson for Tensorboard: [Install Tensorflow on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html "Install Tensorflow on Jetson")
 ```
 sudo apt-get update
 sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
@@ -136,6 +169,18 @@ python3 onnx_export.py --model-dir=models/cat_dog
 NET=models/cat_dog
 DATASET=data/cat_dog
 imagenet --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/cat/01.jpg cat.jpg
+```
+5. Install the Jetson Inference ROS Wrapper
+```
+cd f1tenth_ws/src
+git clone https://github.com/dusty-nv/ros_deep_learning
+cd ..
+colcon build
+```
+Test via:
+```
+source install/setup.bash
+ros2 launch ros_deep_learning detectnet.ros2.launch input:=v4l2:///dev/video0 output:=display://0
 ```
 
 ## Install Range_Libc for the Particle Filter
