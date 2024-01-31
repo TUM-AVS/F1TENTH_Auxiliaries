@@ -177,6 +177,7 @@ imagenet --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 
 5. Install the Jetson Inference ROS Wrapper
 ```
 cd f1tenth_ws/src
+sudo apt-get install ros-foxy-vision-msgs
 git clone https://github.com/dusty-nv/ros_deep_learning
 cd ..
 colcon build
