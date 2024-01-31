@@ -52,6 +52,7 @@ sudo zerotier-cli join <network_id>
 ## Install Object Detection Training and Inference on the Jetson
 16. Install the corresponding ZED SDK from here: [ZED SDK Download](https://www.stereolabs.com/developers/release). The installation instructions are here: [ZED SDK Installation Instructions](https://www.stereolabs.com/docs/installation/jetson)). Enter yes to all options until it wants to download the AI modules. Enter no there.
 ```
+pip3 install onnx
 cd Downloads && chmod +x ZED_SDK* && ./ZED_SDK*
 ```
 18. Add the ZED ROS2 Wrapper to the f1tenth_ws workspace and install according to the official repository: [ZED ROS2 Wrapper Installation Instructions](https://github.com/stereolabs/zed-ros2-wrapper)
