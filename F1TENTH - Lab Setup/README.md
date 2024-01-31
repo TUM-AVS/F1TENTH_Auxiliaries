@@ -50,16 +50,54 @@ export ROS_LOCALHOST_ONLY=1
 
 ## Install Object Detection Training and Inference on the Jetson
 16. Install the corresponding ZED SDK from here: [ZED SDK Download](https://www.stereolabs.com/developers/release). The installation instructions are here: [ZED SDK Installation Instructions](https://www.stereolabs.com/docs/installation/jetson)). Enter yes to all options until it wants to download the AI modules. Enter no there.
-17. Add the ZED ROS2 Wrapper to the f1tenth_ws workspace and install according to the official repository: [ZED ROS2 Wrapper Installation Instructions](https://github.com/stereolabs/zed-ros2-wrapper)
-18. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
-19. Install Tensorflow for Jetson for Tensorboard: [Install Tensorflow on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html "Install Tensorflow on Jetson")
-20. Install PyTorch with CUDA bindings on Jetson: [Install PyTorch on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html "Install PyTorch on Jetson")
-21. Verify the functionality of the install by running the following commands in a terminal:
+```
+cd Downloads && chmod +x ZED_SDK* && ./ZED_SDK*
+```
+18. Add the ZED ROS2 Wrapper to the f1tenth_ws workspace and install according to the official repository: [ZED ROS2 Wrapper Installation Instructions](https://github.com/stereolabs/zed-ros2-wrapper)
+19. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
+20. Install Tensorflow for Jetson for Tensorboard: [Install Tensorflow on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html "Install Tensorflow on Jetson")
+```
+sudo apt-get update
+sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
+sudo apt-get install python3-pip
+sudo python3 -m pip install --upgrade pip
+sudo pip3 install -U testresources setuptools==65.5.0
+sudo pip3 install -U numpy==1.22 future==0.18.2 mock==3.0.5 keras_preprocessing==1.1.2 keras_applications==1.0.8 gast==0.4.0 protobuf pybind11 cython pkgconfig packaging h5py==3.7.0
+sudo pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v512 tensorflow==2.12.0+nv23.06
+```
+22. Install PyTorch with CUDA bindings on Jetson: [Install PyTorch on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html "Install PyTorch on Jetson")
+Download the PyTorch wheel from this link: [Download PyTorch wheel](https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
+Replace <path/to/torch> with the full path including /home/etc. to the wheel file
+```
+sudo apt-get -y update;
+sudo apt-get -y install python3-pip libopenblas-dev
+export TORCH_INSTALL=<path/to/torch>
+python3 -m pip install --upgrade pip
+python3 -m pip install numpy==’1.26.1’
+python3 -m pip install --no-cache $TORCH_INSTALL
+```
+24. Verify the functionality of the install by running the following commands in a terminal:d
 - "python3"
 - "import torch"
 - "print(torch.cuda.is_available())"
 - "exit()"
 If the command prints true at the end, Torch can use the GPU.
+1. Install Torchvision with [Install Torchvision on Jetson](https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
+Look up the torchvision version corresponding to the PyTorch Version
+and insert it as e.g. v0.16.1 in <version> and 0.16.1 for <build_version>. The installation takes quite some time.
+```
+sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libopenblas-dev libavcodec-dev libavformat-dev libswscale-de
+git clone --branch <version> https://github.com/pytorch/vision torchvision
+cd torchvision
+export BUILD_VERSION=<build_version>
+python3 setup.py install --user
+```
+Test the success with:
+```
+python3
+import torchvision
+exit()
+```
 15. In a terminal: "export LD_PRELOAD=/lib/aarch64-linux-gnu/libGLdispatch.so"
 16. python3 train_ssd.py --dataset-type=voc --data=data/cone_dataset --model-dir=models/mobilenetv2 --batch-size=4 --workers=0 --epochs=10
 17. python3 onnx_export.py --model-dir=models/mobilenetv2
