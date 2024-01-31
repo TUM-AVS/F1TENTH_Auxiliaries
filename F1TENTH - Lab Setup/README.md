@@ -1,4 +1,4 @@
-# Instructions to set up an NVIDIA Jetson Orin Nano for all TUM F1TENTH Labs using a SD Card.
+# Instructions to set up an NVIDIA Jetson Orin Nano for all TUM F1TENTH Labs using an SD Card or SSD.
 ## General Setup
 0. If you want to resetup and SD Card, save all important data from the previous SD Card image.
 1. Flash an SD Card with the correct Jetpack Version (currently 5.1.2 [Jetpack 5.1.2 Download](https://developer.nvidia.com/embedded/jetpack-sdk-512)) using, e.g., Balena Etcher: [Balena Etcher Download](https://etcher.balena.io).
