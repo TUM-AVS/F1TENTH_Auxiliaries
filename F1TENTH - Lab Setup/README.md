@@ -19,11 +19,6 @@ cd RTL88x2BU-Linux-Driver && make clean && make && sudo make install
 ```
 8. Insert the Bluetooth Adapter and Wifi Adapter and check successful connections
 9. For usage at TUM in the eduroam Wifi, please log into Eduroam using the official python script you can download [here](https://cat.eduroam.org)
-10. [Install Zerotier](https://www.zerotier.com/download/) and add the car to the correct network by replacing <network_id> with the correct parameter
-```
-curl -s https://install.zerotier.com | sudo bash
-zerotier-cli join <network_id>
-```
 11. Install X11VNC
 ```
 sudo apt-get install x11vnc
@@ -46,6 +41,11 @@ sudo nano ~/.bashrc
 15. Enter in the last line the following command, save and then close the file
 ```
 export ROS_LOCALHOST_ONLY=1
+```
+10. [Install Zerotier](https://www.zerotier.com/download/) and add the car to the correct network by replacing <network_id> with the correct parameter
+```
+curl -s https://install.zerotier.com | sudo bash
+sudo zerotier-cli join <network_id>
 ```
 
 ## Install Object Detection Training and Inference on the Jetson
