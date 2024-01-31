@@ -1,25 +1,65 @@
-## Instructions to set up an NVIDIA Jetson Orin Nano for all TUM F1TENTH Labs using a SD Card.
+# Instructions to set up an NVIDIA Jetson Orin Nano for all TUM F1TENTH Labs using a SD Card.
+## General Setup
 0. If you want to resetup and SD Card, save all important data from the previous SD Card image.
 1. Flash an SD Card with the correct Jetpack Version (currently 5.1.2 [Jetpack 5.1.2 Download](https://developer.nvidia.com/embedded/jetpack-sdk-512)) using, e.g., Balena Etcher: [Balena Etcher Download](https://etcher.balena.io).
 2. Insert the SD Card, power up the Jetson and set up the user (username: f1tenth, password: f1tenth).
-3. Run "sudo apt-get update" and "sudo apt-get upgrade"
-4. Install the Wifi driver according to the installation instructions
-5. Insert the Bluetooth Adapter and Wifi Adapter and check successful connections
-6. [Install ROS](https://docs.ros.org/en/foxy/Installation.html)
-7. [Install the F1TENTH stack](https://f1tenth.readthedocs.io/en/foxy_test/getting_started/firmware/drive_workspace.html#doc-drive-workspace). Use "rosdep update --include-eol-distros"!
-8. [Install Zerotier](https://www.zerotier.com/download/)
-9. Add a unique ID to the bashrc file so no car communicates with each other over Wifi. The ID is identical to the chassis number.
-10. Open the bash script with "sudo nano ~/.bashrc" and in the last line enter for, e.g., chassis 7: "ROS_DOMAIN_ID=7".
-11. Install the corresponding ZED SDK from here: [ZED SDK Download](https://www.stereolabs.com/developers/release). The installation instructions are here: [ZED SDK Installation Instructions](https://www.stereolabs.com/docs/installation/jetson)). Click yes to all options until it wants to download the AI modules. Click no there.
-12. Add the ZED ROS2 Wrapper to the f1tenth_ws workspace and install according to the official repository: [ZED ROS2 Wrapper Installation Instructions](https://github.com/stereolabs/zed-ros2-wrapper)
-13. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
-14. Install PyTorch with CUDA bindings on Jetson: [Install PyTorch on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html "Install PyTorch on Jetson")
-15. Verify the functionality of the install by running the following commands in a terminal:
+3. Alternative flash the SSD with the SDK Manager from NVidia: [NVidia SDK Manager](https://developer.nvidia.com/sdk-manager)
+4. Update and Upgrade the software:
+```
+sudo apt-get update && sudo apt-get upgrade
+```
+7. Install the Wifi driver according to the installation instructions
+   1. Clone the repository
+```
+git clone https://github.com/RinCat/RTL88x2BU-Linux-Driver.git
+```
+   2. Navigate inside the directory and build the module
+```
+cd RTL88x2BU-Linux-Driver && make clean && make && sudo make install
+```
+8. Insert the Bluetooth Adapter and Wifi Adapter and check successful connections
+9. For usage at TUM in the eduroam Wifi, please log into Eduroam using the official python script you can download [here](https://cat.eduroam.org)
+10. [Install Zerotier](https://www.zerotier.com/download/) and add the car to the correct network by replacing <network_id> with the correct parameter
+```
+curl -s https://install.zerotier.com | sudo bash
+zerotier-cli join <network_id>
+```
+11. Install X11VNC
+```
+sudo apt-get install x11vnc
+```
+12. Set the X11 password to f1tenth and save it at the default location
+```
+x11vnc -storepasswd
+```
+
+
+
+## Install ROS with the base F1TENTH software stack
+10. [Install ROS](https://docs.ros.org/en/foxy/Installation.html)
+11. [Install the F1TENTH stack](https://f1tenth.readthedocs.io/en/foxy_test/getting_started/firmware/drive_workspace.html#doc-drive-workspace). Use "rosdep update --include-eol-distros"!
+13. Add a line to the bashrc file so no car communicates with each other over Wifi.
+14. Open the bash script with:
+```
+sudo nano ~/.bashrc
+```
+15. Enter in the last line the following command, save and then close the file
+```
+export ROS_LOCALHOST_ONLY=1
+```
+
+## Install Object Detection Training and Inference on the Jetson
+16. Install the corresponding ZED SDK from here: [ZED SDK Download](https://www.stereolabs.com/developers/release). The installation instructions are here: [ZED SDK Installation Instructions](https://www.stereolabs.com/docs/installation/jetson)). Enter yes to all options until it wants to download the AI modules. Enter no there.
+17. Add the ZED ROS2 Wrapper to the f1tenth_ws workspace and install according to the official repository: [ZED ROS2 Wrapper Installation Instructions](https://github.com/stereolabs/zed-ros2-wrapper)
+18. Increase the Swap Size to 16GB according to this repo: [JetsonHacks Swap Size](https://github.com/JetsonHacksNano/resizeSwapMemory "JetsonHacks Swap Size")
+19. Install Tensorflow for Jetson for Tensorboard: [Install Tensorflow on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html "Install Tensorflow on Jetson")
+20. Install PyTorch with CUDA bindings on Jetson: [Install PyTorch on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html "Install PyTorch on Jetson")
+21. Verify the functionality of the install by running the following commands in a terminal:
 - "python3"
 - "import torch"
 - "print(torch.cuda.is_available())"
+- "exit()"
 If the command prints true at the end, Torch can use the GPU.
-14. Install Tensorflow for Jetson for Tensorboard: [Install Tensorflow on Jetson](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html "Install Tensorflow on Jetson")
 15. In a terminal: "export LD_PRELOAD=/lib/aarch64-linux-gnu/libGLdispatch.so"
 16. python3 train_ssd.py --dataset-type=voc --data=data/cone_dataset --model-dir=models/mobilenetv2 --batch-size=4 --workers=0 --epochs=10
 17. python3 onnx_export.py --model-dir=models/mobilenetv2
