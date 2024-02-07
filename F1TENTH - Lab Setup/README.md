@@ -17,6 +17,7 @@ The following instructions where tested and verifies on the following hard- and 
 sudo apt-get update && sudo apt-get upgrade
 ```
 5. Install the Wifi driver according to the installation instructions
+
 Clone the repository:
 ```
 git clone https://github.com/RinCat/RTL88x2BU-Linux-Driver.git
