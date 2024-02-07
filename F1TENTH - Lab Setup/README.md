@@ -57,6 +57,7 @@ export /opt/ros/foxy/setup.bash
 curl -s https://install.zerotier.com | sudo bash
 sudo zerotier-cli join <network_id>
 ```
+5. Add a second Ethernet profile called "Standard" with default settings.
 
 ## Install the required Packages for Deep Learning
 1. Install the corresponding ZED SDK from here: [ZED SDK Download](https://www.stereolabs.com/developers/release). The installation instructions are here: [ZED SDK Installation Instructions](https://www.stereolabs.com/docs/installation/jetson)). Enter yes to all options until it wants to download the AI modules. Enter no there.
