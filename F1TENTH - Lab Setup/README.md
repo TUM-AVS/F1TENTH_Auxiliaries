@@ -42,6 +42,15 @@ x11vnc -storepasswd
 ## Install ROS with the base F1TENTH software stack
 1. [Install ROS](https://docs.ros.org/en/foxy/Installation.html)
 2. [Install the F1TENTH stack](https://f1tenth.readthedocs.io/en/foxy_test/getting_started/firmware/drive_workspace.html#doc-drive-workspace). Use "rosdep update --include-eol-distros"!
+
+> [!IMPORTANT]  
+> The udev files (e.g., /etc/udev/rules.d/99-hokuyo.rules) do not exist yet. Navigating to the folder and running
+> ```
+> sudo nano 99-hokuyo.rules
+> ```
+> will create the corresponding file.
+
+
 3. Add two lines to the bashrc file so no car communicates with each other over Wifi and ROS2 Foxy is automatically sourced.
 Open the bash script with:
 ```
