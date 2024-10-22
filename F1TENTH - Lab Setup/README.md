@@ -44,7 +44,7 @@ x11vnc -storepasswd
 2. [Install the F1TENTH stack](https://f1tenth.readthedocs.io/en/foxy_test/getting_started/firmware/drive_workspace.html#doc-drive-workspace). Use "rosdep update --include-eol-distros"!
 
 > [!IMPORTANT]  
-> The udev files (e.g., /etc/udev/rules.d/99-hokuyo.rules) do not exist yet. Navigating to the folder and running
+> The udev files (e.g., /etc/udev/rules.d/99-hokuyo.rules) do not exist yet. Running
 > ```
 > sudo nano /etc/udev/rules.d/99-hokuyo.rules
 > ```
