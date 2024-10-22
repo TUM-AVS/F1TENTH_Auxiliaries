@@ -46,7 +46,7 @@ x11vnc -storepasswd
 > [!IMPORTANT]  
 > The udev files (e.g., /etc/udev/rules.d/99-hokuyo.rules) do not exist yet. Navigating to the folder and running
 > ```
-> sudo nano 99-hokuyo.rules
+> sudo nano /etc/udev/rules.d/99-hokuyo.rules
 > ```
 > will create the corresponding file.
 
